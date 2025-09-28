@@ -1,63 +1,74 @@
-# Welcome to your Lovable project
 
-## Project info
+# SAI-AI Portal (Smart India Hackathon 2025)
 
-**URL**: https://lovable.dev/projects/7fe4313c-2716-45d5-9f91-c14fb75cd7f2
+This repository contains the codebase for the SAI-AI Portal, developed for the Smart India Hackathon 2025. The portal is an advanced AI-powered platform for sports talent assessment and performance analytics, designed for the Sports Authority of India.
 
-## How can I edit this code?
+## Features
 
-There are several ways of editing your application.
+- Athlete management and benchmarking
+- Performance verification and analytics
+- Role-based dashboards (Admin, Coordinator, Government, User)
+- Modern UI with shadcn-ui and Tailwind CSS
+- Built with React, TypeScript, and Vite
 
-**Use Lovable**
+## Getting Started
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/7fe4313c-2716-45d5-9f91-c14fb75cd7f2) and start prompting.
+### Prerequisites
+- Node.js (v18 or above recommended)
+- npm (v9 or above)
 
-Changes made via Lovable will be committed automatically to this repo.
+### Installation
+Clone the repository and install dependencies:
 
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```bash
+git clone https://github.com/IAmVivekDatta/athletescope-ai-73.git
+cd athletescope-ai-73
+npm install
 ```
 
-**Edit a file directly in GitHub**
+### Development
+Start the development server:
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```bash
+npm run dev
+```
+The app will be available at `http://localhost:8080` (or as shown in the terminal).
 
-**Use GitHub Codespaces**
+### Linting
+Run ESLint to check for code quality issues:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```bash
+npm run lint
+```
 
-## What technologies are used for this project?
+### Building for Production
+Build the app for production:
 
-This project is built with:
+```bash
+npm run build
+```
+The output will be in the `dist/` folder.
 
-- Vite
-- TypeScript
+### Deploying to GitHub Pages
+Deploy the production build to GitHub Pages:
+
+```bash
+npm run deploy
+```
+The site will be available at: https://iamvivekdatta.github.io/athletescope-ai-73/
+
+## Technologies Used
 - React
+- TypeScript
+- Vite
 - shadcn-ui
+- Tailwind CSS
+
+## Team
+Developed by Team SAI-AI for Smart India Hackathon 2025.
+
+## License
+This project is for educational and hackathon purposes.
 - Tailwind CSS
 
 ## How can I deploy this project?
