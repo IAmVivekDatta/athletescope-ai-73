@@ -148,7 +148,7 @@ export function AppSidebar() {
                         : "hover:bg-accent/10 text-foreground"
                     }`}
                   >
-                    <NavLink to={item.url} className="flex items-center gap-3 px-3 py-2">
+                    <NavLink to={item.url} className="flex items-center gap-4 px-4 py-4 min-h-[60px] rounded-lg">
                       <item.icon className="h-5 w-5 flex-shrink-0" />
                       <div>
                         <span className="font-medium">{item.title}</span>
@@ -179,7 +179,7 @@ export function AppSidebar() {
                           : "hover:bg-accent/10 text-foreground"
                       }`}
                     >
-                      <NavLink to={item.url} className="flex items-center gap-3 px-3 py-2">
+                      <NavLink to={item.url} className="flex items-center gap-4 px-4 py-4 min-h-[60px] rounded-lg">
                         <item.icon className="h-5 w-5 flex-shrink-0" />
                         <div>
                           <span className="font-medium">{item.title}</span>
