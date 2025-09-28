@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
+import { useToast } from "@/hooks/use-toast";
 import { 
   Users, 
   CheckSquare, 
@@ -10,7 +12,9 @@ import {
   Activity,
   Target,
   Award,
-  Timer
+  Timer,
+  Download,
+  Loader2
 } from "lucide-react";
 import {
   BarChart,
@@ -46,6 +50,64 @@ const sportDistribution = [
 ];
 
 const Dashboard = () => {
+  const [isGeneratingReport, setIsGeneratingReport] = useState(false);
+  const { toast } = useToast();
+
+  const generateReport = async () => {
+    setIsGeneratingReport(true);
+    
+    try {
+      // Simulate report generation process
+      toast({
+        title: "Generating Report",
+        description: "Please wait while we compile your performance analytics...",
+      });
+
+      // Simulate API call delay
+      await new Promise(resolve => setTimeout(resolve, 3000));
+
+      // Create mock report data
+      const reportData = {
+        totalAthletes: 2847,
+        totalAssessments: 1423,
+        topPerformers: 156,
+        aiAccuracy: 97.8,
+        performanceData,
+        sportDistribution,
+        generatedAt: new Date().toISOString(),
+        reportType: "Monthly Performance Analytics"
+      };
+
+      // Convert to downloadable format
+      const reportBlob = new Blob([JSON.stringify(reportData, null, 2)], {
+        type: 'application/json'
+      });
+      
+      // Create download link
+      const url = URL.createObjectURL(reportBlob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `SAI-Performance-Report-${new Date().toISOString().split('T')[0]}.json`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+
+      toast({
+        title: "Report Generated Successfully",
+        description: "Your performance analytics report has been downloaded.",
+      });
+
+    } catch (error) {
+      toast({
+        title: "Report Generation Failed",
+        description: "There was an error generating your report. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsGeneratingReport(false);
+    }
+  };
   return (
     <div className="space-y-6 animate-fade-in">
       {/* Header */}
@@ -61,8 +123,22 @@ const Dashboard = () => {
             <Activity className="w-3 h-3 mr-1" />
             System Online
           </Badge>
-          <Button className="bg-gradient-accent shadow-accent">
-            Generate Report
+          <Button 
+            className="bg-gradient-accent shadow-accent" 
+            onClick={generateReport}
+            disabled={isGeneratingReport}
+          >
+            {isGeneratingReport ? (
+              <>
+                <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                Generating...
+              </>
+            ) : (
+              <>
+                <Download className="w-4 h-4 mr-2" />
+                Generate Report
+              </>
+            )}
           </Button>
         </div>
       </div>
